@@ -2,9 +2,6 @@
  const child=require('./model/childmodel');
 /*  const express=require('express')
  const app=express() */
- const path = require('path');
-app.use(express.static(path.join(__filename, 'home.html', 'public')));
-
  
 
 class usercontroller {
