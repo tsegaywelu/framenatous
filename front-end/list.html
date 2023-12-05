@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list of customers </title>
+</head>
+<body>
+    <button onclick="list()">see lists</button>
+   <ol class="customers" id="customers"> </ol> 
+  
+   <script src="axios.min.js"></script>
+<script>
+async function list(){
+    let response=await axios({method:'get',url:'http://localhost:3000/list'})
+    let users=response.data;
+    console.table(response);
+    let datalist=document.body.querySelector("#customers");
+    let htmlcontent='';
+    users.forEach(user=>{
+        htmlcontent +="<li >"+user.name +user.email +user.country+user.password+ "<li>"
+    })
+   datalist.innerHTML=htmlcontent;
+
+}
+ </script>
+</body>
+</html>

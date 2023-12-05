@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>login page</title>
+</head>
+<style>
+  
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+ /* background-image: url(background.jpg);*/
+ background-color: whitesmoke;
+}
+input{
+  margin: 20px;
+  font-size: inherit;
+  width: 97%;
+  background-color: papayawhip;
+  border-top:none;
+  border-bottom: 2px solid black;
+  border-left: none;
+  border-right: none;
+  margin-left: 0;
+  
+
+}
+
+form {
+  
+  padding: 20px;
+  width: 500px;
+  
+  background-color: papayawhip;
+  height: 90%;
+  font-size:20px ;
+}
+h1{
+  text-align: center;
+  color: blue;
+}
+a{
+  float: right;
+}
+button{
+  margin-left: 60px;
+  width: 70%;
+  background-color: blue;
+  padding: 10px;
+  color: white;
+  letter-spacing: 5px;
+  cursor: pointer;
+  opacity: 50%;
+}
+button:hover{
+  opacity: 100%;
+}
+
+ .my-element {
+  display: flex;
+  background-color: antiquewhite;
+  margin: 30px;
+  content: "\f09a"; /* FontAwesome icon unicode */
+  font-family: "Font Awesome 5 Brands"; /* Specify the FontAwesome font-family */
+  
+}
+
+.my-element:active {
+  /* Styles for the icon when the element is active/clicked */
+  color: red;
+}
+
+.my-element:hover {
+  /* Styles for the icon when the mouse is over the element */
+  width: 20px; height: 20px;
+  background-color:darkblue;
+  color: white;
+  opacity: 0.8;
+}
+
+a.my-element:visited {
+  /* Styles for the icon when the link has been visited */
+  text-decoration: line-through;
+}
+.icons{
+  display: flex;
+  align-items: center;
+  gap: 0px;
+}
+</style>
+<body>
+  <form action="" >
+    <h1>log in page </h1>
+    <label for="username">username</label>
+    <div  class="icons">
+      
+    <i class="fa-solid fa-address-book"></i> <input type="text" placeholder="type your name here" id="username" ><br>
+    </div>
+    <label for="password"> password</label>
+    <div class="icons">
+      <i class="fa-solid fa-key"></i>
+    <input type="password"  placeholder="type your password here" id="password">
+    </div>
+    <br>
+   <ol></ol>
+    <a href="register.html">forget password</a><br><br>
+    <!-- <button onclick="validate(event)">login</button> -->
+    <button onclick="validate(event)">login</button> 
+    <p style="text-align: center; color: blue;">or sign up through</p>
+    <a href="https://www.facebook.com" target="_parent"><i class="fab fa-facebook-f my-element"></i></a>
+    <a href="https://twitter.com/" target="_top"><i class="fab fa-twitter my-element" ></i></a>
+    <a href="https://www.github.com/"><i class="fab fa-github  my-element"></i></a>
+   <a href="https://www.whatsapp.com"> <i class="fa-brands fa-whatsapp  my-element"></i></a>
+    <a href=""><i class="fa-brands fa-github  my-element"></i></a>
+   <a href="https://www.linkedin.com" target="_blank"> <i class="fa-brands fa-linkedin  my-element"></i></a>
+
+  </form>
+  <script src="https://kit.fontawesome.com/5cca58064e.js" crossorigin="anonymous"></script>
+  <script src="login.js"></script>
+  <script src="axios.min.js"></script>
+</body>
+</html>

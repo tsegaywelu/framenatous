@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>freame natous orphanage center
+    </title>
+    <style>body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+       /* background-image: url(background.jpg);*/
+       background-color: whitesmoke;
+      }
+      input{
+        margin: 20px;
+        font-size: inherit;
+        width: 97%;
+        background-color: papayawhip;
+        border-top:none;
+        border-bottom: 2px solid black;
+        border-left: none;
+        border-right: none;
+        margin-left: 0;
+        
+      
+      }
+      
+      form {
+        
+        padding: 20px;
+        width: 500px;
+        
+        background-color: papayawhip;
+        height: 90%;
+        font-size:20px ;
+      }
+      p{
+        text-align: center;
+        color: blue;
+        font-weight: bolder;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-style: oblique;
+        font-size: 30px;
+      }
+      a{
+        float: left;
+        font-size: 30px;
+      }
+      button{
+        margin-left: 60px;
+        width: 70%;
+        background-color: blue;
+        padding: 10px;
+        color: white;
+        letter-spacing: 5px;
+        cursor: pointer;
+        opacity: 50%;
+      }
+      button:hover{
+        opacity: 100%;
+      }
+      
+      select{
+        height: 40px;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      h1{
+        float: left;
+        margin-left: 0px !important;
+        position: absolute !important;
+      }
+      </style>
+</head>
+<body>
+    
+    <form  onsubmit="validate(event)">
+       <p>rigistraion form</p>
+        <input type="text" id="username" name="username"  class="namer" placeholder="type your name" required><br>
+        
+        <input type="password" id="password" placeholder="type your password here" name="password" required ><br>
+        <input type="tel" name="telephone" id="telephone"  placeholder="type your phone" required>
+        <input type="email" id="email" name="email" placeholder="type your email " required>
+        <select name="country" id="country" aria-placeholder="select your country"  >
+            <option value="ethiopia">Ethiopia</option>
+            <option value="eretria">eretria</option>
+            <option value="sudan" >sudan</option>
+        </select><br>
+        <button type="submit" value="register">submit</button>
+        <a href="login.html">have account log in </a>
+    </form>
+    <script src="axios.min.js"></script>       
+    
+    <script >
+        function validate(e){
+            e.preventDefault();
+           let uname=document.getElementsByClassName('namer')[0].value ;
+           let password=document.getElementById('password').value;
+           let country=document.getElementsByName('country')[0].value;
+           let telephone=document.getElementsByTagName('input')[2].value; 
+           let email= document.querySelector("#email").value
+           let message=document.getElementById('error');
+           if(uname.length<=5 ||password.length<=5){
+            if(!message){
+            message=document.createElement('span');
+            message.id='error';
+            message.innerHTML="the length of username or password must greater than five"
+            document.querySelector('form').appendChild(message);
+            message.style.color='red';
+            message.style.display='block';
+            }
+           }
+            else{
+            if(message){
+              
+            message.remove();
+          }
+           }
+          
+           
+           //checking letters of my password 
+           if(uname.length>5 && password.length>5){
+        let mypassword=password;
+        let valid=checklettrs(mypassword);
+        console.log(valid);
+        if(valid){
+          message=document.createElement('span');
+            message.id='error';
+            message.innerHTML="you can go now because your password is valid  "
+            document.querySelector('form').appendChild(message);
+            message.style.color='green';
+            message.style.display='block';
+            console.table([{uname,password,email,country,telephone}]);
+            async function register(){
+            let response= await axios({method:'post',url:"http://localhost:3000/regist",data:{
+              uname,password,email,country,telephone
+            }})
+            console.log(response);
+          }
+          register();
+          
+        }
+        else{
+          message=document.createElement('span');
+            message.id='error';
+            message.innerHTML="please include special characters "
+            document.querySelector('form').appendChild(message);
+            message.style.color='red';
+            message.style.display='block';
+
+        }
+
+         function checklettrs(mypassword){
+              if (!/[0-9]/.test(mypassword)) {
+                    return false;
+        }
+                    
+                    if (!/[A-Z]/.test(mypassword)) {
+                     return false;
+        }
+
+                   if (!/[!@#$%^&*]/.test(mypassword)) {
+                              return false;
+        }
+  
+                           return true;
+
+
+         }
+        }
+
+         
+        }
+        
+       
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>frame natos orphanage</title>
+</head>
+<style>
+    body{
+        background-color: antiquewhite;
+    }
+    .icon{
+        display: flex;
+        justify-content: space-evenly;
+        
+    }
+    button{
+        background:rgb(209, 135, 16);
+    }
+    button:hover{
+        background-color: coral;
+        cursor: pointer;
+
+    }
+    .myimg{
+        display: flex;
+       flex-wrap: nowrap;
+       
+
+    }
+    img{
+        width: 25%;
+    }
+   h1{
+   text-align: center;
+    color: blue;
+
+   }
+   .follow{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: larger;
+   }
+   .my-element {
+  display: flex;
+  background-color: antiquewhite;
+  margin: 30px;
+  content: "\f09a"; /* FontAwesome icon unicode */
+  font-family: "Font Awesome 5 Brands"; /* Specify the FontAwesome font-family */
+  
+}
+
+.my-element:active {
+  /* Styles for the icon when the element is active/clicked */
+  color: red;
+}
+
+.my-element:hover {
+  /* Styles for the icon when the mouse is over the element */
+  width: 20px; height: 20px;
+  background-color:darkblue;
+  color: white;
+  opacity: 0.8;
+}
+
+a.my-element:visited {
+  /* Styles for the icon when the link has been visited */
+  text-decoration: line-through;
+}
+.addition{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 25px;
+    font-weight: bolder;
+
+}
+input{
+    font-size: inherit;
+}
+    
+</style>
+<body>
+   <div class="icon">
+    <button><a href="#addchild">add child</a></button><button onclick="childlist()">child list</button> 
+    <button onclick="ourcustomer()"><a href="#customers">our customers</a></button> <button>log out</button>
+    <button>post new situation </button>
+
+   </div>
+   <div class="myimg"> <img src="orphan.PNG" alt="loading image">
+      <img src="orphanage1.PNG" alt="loading image">
+      <img src="orphane2.PNG" alt="loading image">
+      <img src="orphan3.PNG" alt="loading image">
+     </div>
+   <div class="write">
+     <p><span style="font-size: large; color: blue;">frame notes orphanage center </span> is found on mekelle , 
+        amet consectetur adipisicing elit. 
+        Officia pariatur mollitia aspernatur suscipit cupiditate incidunt
+         voluptate. Fugit molestias quidem minima nostrum, earum similique 
+         placeat ipsam est consequuntur esse tenetur numquam?
+     Ipsa ab ipsum obcaecati consequuntur distinctio eaque, ratione sequi 
+     exercitationem dolorem possimus, ex animi itaque minus ullam nobis blanditiis 
+     culpa nihil pariatur asperiores deleniti! Natus alias officia odit dolores 
+     laboriosam!
+     Harum ducimus nobis tempore omnis repudiandae iure, animi, culpa non, 
+     reprehenderit labore adipisci distinctio sunt? Alias, tempora. Cumque,
+      distinctio quia! Aperiam veniam doloremque voluptatem atque, ullam id est repellat
+       quae.0</p>
+   </div> 
+   <h1>please follow us on </h1>
+   <div class="follow">
+    <a href="https://www.facebook.com" target="_parent"><i class="fab fa-facebook-f my-element"></i></a>
+    <a href="https://twitter.com/" target="_top"><i class="fab fa-twitter my-element" ></i></a>
+    <a href="https://www.github.com/"><i class="fab fa-github  my-element"></i></a>
+   <a href="https://www.whatsapp.com"> <i class="fa-brands fa-whatsapp  my-element"></i></a>
+    <a href=""><i class="fa-brands fa-github  my-element"></i></a>
+   <a href="https://www.linkedin.com" target="_blank"> <i class="fa-brands fa-linkedin  my-element"></i></a>
+   </div>
+   <h1>add childs here</h1>
+   <div class="addition" id="addchild">
+    <img src="orphane2.PNG" alt="">
+   <section >
+    <form action="" >
+        <label for="childname">chaild name</label><br>
+        <input type="text" id="childname" name="childname" placeholder="child name"><br>
+        <label for="age" >age</label><br>
+        <input type="number" id="age" name="age" placeholder="child age" max="10" min="0"><br>
+        <label for="childfound">wehre child found?</label><br>
+        <input type="text" id="childfound" name="childfound" class="childfound"  placeholder="where chld found "><br>
+        <label for="status">child health status</label><br>
+        <input type="text" id="status" name="status" placeholder="health status" class="status"><br>
+        <button onclick="addchild(event)">add child</button>
+
+    </form>
+
+   </section>
+   <img src="orphanage1.PNG" alt="">
+   </div>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Est, molestias! Excepturi, temporibus adipisci veniam repudiandae
+     officia harum. Asperiores non rerum alias
+     inventore! Quisquam ullam aliquam nesciunt suscipit natus accusamus atque.</p>
+     <ol id="customers"></ol>
+   <script src="https://kit.fontawesome.com/5cca58064e.js" crossorigin="anonymous"></script>
+   <script src="axios.min.js"></script>
+   <script>
+
+    function addchild(e){
+      
+        e.preventDefault();
+    let childname,age,childfound,status;
+    childname=document.querySelector('#childname').value;
+     age=document.getElementById('age').value;
+    childfound=document.getElementsByClassName('childfound')[0].value;
+    status=document.getElementsByClassName('status')[0].value; 
+    console.table({childname,age,childfound,status})
+    async function letaddchild(){
+            let response= await axios({method:'post',url:"http://localhost:3000/addchild",data:{
+              childname,age,childfound,status
+            }})
+            console.log(response);
+          }
+          letaddchild();
+        } 
+        async function ourcustomer(){
+            let response=await axios({method:'get',url:'http://localhost:3000/list'})
+    let users=response.data;
+    console.table(response);
+    let datalist=document.body.querySelector("#customers");
+    let htmlcontent='';
+    users.forEach(user=>{
+        htmlcontent +="<li >"+user.name +user.email +user.country+user.password+ "<li>"
+    })
+   datalist.innerHTML=htmlcontent;
+        }
+        async function childlist(){
+            let response=await axios({method:'get',url:'http://localhost:3000/childlist'})
+    let ourchilds=response.data;
+    console.table(response);
+    let datalist=document.body.querySelector("#customers");
+    let htmlcontent='';
+    ourchilds.forEach(ourchild=>{
+        htmlcontent +="<li >"+ourchild.childname +ourchild.age +ourchild.childfound+ourchild.statushealth+ "<li>"
+    })
+   datalist.innerHTML=htmlcontent;
+        }
+
+
+   </script>
+</body>
+</html>
